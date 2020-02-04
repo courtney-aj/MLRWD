@@ -1,0 +1,21 @@
+- I ranked the four reviews. For multiple, the initial intuition did not actually match what the reviewer explicitly stated about whether they enjoyed the film.
+
+Part 2:
+- What do I think the following entries mean? 
+word=boring intensity=strong polarity=negative
+word=excellently intensity=strong polarity=positive
+s mean? 
+The entries denote: the word, the intensity and the polarity. Polarity describes “direction” from neutral, either positive or negative. Intensity describes how extremely the word is positive or negative. Boring is negative, and strong. It is unlikely a person would describe something they liked using the word boring, and by using boring they imply they strongly dislike it.
+
+word=love intensity=strong polarity=positive
+word=hate intensity=strong polarity=negative
+word=disappoint intensity=strong polarity=negative
+word=annoying intensity=strong polarity=negative
+word=classic intensity=strong polarity=positive
+word=slow intensity=weak polarity=negative
+word=fun intensity=strong polarity=positive
+word=beautiful intensity=strong polarity=positive
+word=great intensity=strong polarity=positive
+word=awful intensity=strong polarity=negative
+
+Most matched the lexicon for both intensity and polarity. However, as I noted to others before checking that it might not, the word classic did not match in intensity. If one said “classic” in the context of a film review, I would expect it to be considered strong, but the lexicon classifies it as a weak positive word - which is how I would classify it for general usage. 
