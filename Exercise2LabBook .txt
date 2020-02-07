@@ -1,0 +1,18 @@
+Step 0: Data preparation.
+
+"Use the dataset from Task 1 for today’s training and development. You should split the 1800 document dataset from Task 1 so there are 200 documents in your development set (balanced: 100 positive, 100 negative) and 1600 in the training set (also balanced). There are a further 200 reviews that you do not have access to at the moment (held-out data) that you will use for more formal testing and evaluation in a subsequent session. Code to make the split has been provided in DataSplit.java (note that this code refers to the developement data as the validationSet).
+Having made the split, you can rerun the simpleClassifer from Task 1 on the 200 examples in the development set. Later you can see whether you get an improvement with the Naive Bayes classifier you implement today. N.B. everything you need to implement this step can be found within Exercise2Tester.java. Familiarise yourself with this class first."
+
+- Using Exercise2Tester, and running the simple classifier on TrainingSet. See Exercise2LabBook Step 0
+------------------------------------------------------------------------------------------
+Step 1: Parameter Estimation
+
+Write a program that estimates these probabilities from the training data. Then compute the logs of these probabilities.
+
+{NEGATIVE=0.5, POSITIVE=0.5}
+
+Step 2: Classification
+
+Now use the probabilities to apply the classification argmax formula of Naive Bayes to the development se
+
+This performed with accuracy 0.515 - not very much above random.

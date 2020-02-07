@@ -7,7 +7,6 @@ import uk.ac.cam.cl.mlrd.exercises.sentiment_detection.Tokenizer;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.*;
-import java.lang.Math;
 
 
 public class Exercise2 implements IExercise2 {
@@ -69,13 +68,12 @@ public class Exercise2 implements IExercise2 {
         HashMap<Sentiment, Double> wordmap = new HashMap<>();
         Map<String, Map<Sentiment, Double>> results = new HashMap<>();
 
-        Double logprob;
 
         for (String word : poswords.keySet()){
             wordmap = new HashMap<>();
             if (negwords.get(word) == null){
                 wordmap.put(Sentiment.POSITIVE, java.lang.Math.log(poswords.get(word)/totalposwords));
-                wordmap.put(Sentiment.NEGATIVE, 0.0);
+                wordmap.put(Sentiment.NEGATIVE, java.lang.Math.log(0.0));
             }
             else {
                 wordmap.put(Sentiment.POSITIVE, java.lang.Math.log(poswords.get(word)/totalposwords));
@@ -87,7 +85,7 @@ public class Exercise2 implements IExercise2 {
         for (String word : negwords.keySet()){
             wordmap = new HashMap<>();
             if (poswords.get(word) == null){
-                wordmap.put(Sentiment.POSITIVE, 0.0);
+                wordmap.put(Sentiment.POSITIVE, java.lang.Math.log(0.0));
                 wordmap.put(Sentiment.NEGATIVE, java.lang.Math.log(negwords.get(word)/totalnegwords));
                 results.put(word, wordmap);
             }
@@ -132,20 +130,26 @@ public class Exercise2 implements IExercise2 {
             }
         }
 
-        HashMap<Sentiment, Double> wordmap = new HashMap<>();
+        HashMap<Sentiment, Double> wordmap;
         Map<String, Map<Sentiment, Double>> results = new HashMap<>();
 
-        Double logprob;
+        double vocab = negwords.size();
+        for (String w : poswords.keySet()){
+            if (!negwords.containsKey(w)){
+                vocab+=1.0;
+            }
+        }
+
 
         for (String word : poswords.keySet()){
             wordmap = new HashMap<>();
             if (negwords.get(word) == null){
-                wordmap.put(Sentiment.POSITIVE, 1.0 + java.lang.Math.log(poswords.get(word)/totalposwords));
-                wordmap.put(Sentiment.NEGATIVE, 1.0);
+                wordmap.put(Sentiment.POSITIVE, java.lang.Math.log((1.0 + poswords.get(word))/(totalposwords + vocab)));
+                wordmap.put(Sentiment.NEGATIVE, java.lang.Math.log(1.0/(totalnegwords + vocab)));
             }
             else {
-                wordmap.put(Sentiment.POSITIVE, 1.0 + java.lang.Math.log(poswords.get(word)/totalposwords));
-                wordmap.put(Sentiment.NEGATIVE, 1.0 + java.lang.Math.log(negwords.get(word)/totalnegwords));
+                wordmap.put(Sentiment.POSITIVE, java.lang.Math.log((1.0 + poswords.get(word))/(totalposwords + vocab)));
+                wordmap.put(Sentiment.NEGATIVE, java.lang.Math.log((1.0 + negwords.get(word))/(totalnegwords + vocab)));
             }
             results.put(word, wordmap);
         }
@@ -153,8 +157,8 @@ public class Exercise2 implements IExercise2 {
         for (String word : negwords.keySet()){
             wordmap = new HashMap<>();
             if (poswords.get(word) == null){
-                wordmap.put(Sentiment.POSITIVE, 1.0);
-                wordmap.put(Sentiment.NEGATIVE, 1.0 + java.lang.Math.log(negwords.get(word)/totalnegwords));
+                wordmap.put(Sentiment.POSITIVE, java.lang.Math.log(1.0/(totalposwords + vocab)));
+                wordmap.put(Sentiment.NEGATIVE, java.lang.Math.log((1.0 + negwords.get(word))/(totalnegwords + vocab)));
                 results.put(word, wordmap);
             }
         }
