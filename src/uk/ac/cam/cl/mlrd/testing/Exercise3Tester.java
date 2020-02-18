@@ -31,9 +31,9 @@ public class Exercise3Tester {
             dataSet.add(item);
         }
         LinkedList<Pair<String, Double>> hold = implementation.getFreqs(dataSet, lexiconFile);
-        /*for(Pair<String, Double> p : hold) {
+        for(Pair<String, Double> p : hold) {
             System.out.println(p);
-        }*/
+        }
 
         LinkedList<String> mylex = new LinkedList<>();
         mylex.add(0,"love");
@@ -51,27 +51,27 @@ public class Exercise3Tester {
         LinkedList<BestFit.Point> points2 = new LinkedList<>();
 
         LinkedList<BestFit.Point> points = new LinkedList<>();
-        /*for(Double i=0.0; i<10000.0; i++){
+        for(Double i=0.0; i<10000.0; i++){
             points.add(new BestFit.Point(i+1.0, hold.get(i.intValue()).getValue()));
             if(mylex.contains(hold.get(i.intValue()).getKey())) {
                 points2.add(new BestFit.Point(i + 1.0, hold.get(i.intValue()).getValue()));
             }
-        }*/
+        }
         //ChartPlotter.plotLines(points, points2);
         System.out.println("Done");
 
 
         LinkedList<BestFit.Point> points3 = new LinkedList<>();
-        /*for(double i = 0.0; i<10000.0; i++){
+        for(double i = 0.0; i<10000.0; i++){
             points3.add(new BestFit.Point(java.lang.Math.log(i+1.0), java.lang.Math.log(hold.get((int) i).getValue())));
-        }*/
+        }
         int i=0;
 
         Map<BestFit.Point, Double> series = new HashMap<>();
-        /*for (BestFit.Point p : points3){
+        for (BestFit.Point p : points3){
             series.put(p, hold.get(i).getValue());
             i++;
-        }*/
+        }
         BestFit.Line line = BestFit.leastSquares(series);
         double grad = line.gradient;
         double yint = line.yIntercept;
@@ -82,8 +82,8 @@ public class Exercise3Tester {
         points4.add(new BestFit.Point(-yint/grad, 0));
 
 
-        //ChartPlotter.plotLines(points3, points4);
-        System.out.println(implementation.exFreq(0, grad, yint));
+        ChartPlotter.plotLines(points3, points4);
+        //System.out.println(implementation.exFreq(0, grad, yint));
 
         double k = implementation.exFreq(0, grad, yint);
         double alpha = -grad;

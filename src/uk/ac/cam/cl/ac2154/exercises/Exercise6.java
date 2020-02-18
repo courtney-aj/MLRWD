@@ -184,7 +184,7 @@ public class Exercise6 implements IExercise6 {
         double n_i = 133.0;
         double n_i_j;
         double k;
-        System.out.println(agreementTable);
+
 
         {   //Calculate P_e
             Sentiment j = Sentiment.POSITIVE;

@@ -98,23 +98,13 @@ public class Exercise2 implements IExercise2 {
             tokens = Tokenizer.tokenize(p);
             if (trainingSet.get(p) == Sentiment.POSITIVE){
                 for (String token : tokens){
-                    if (poswords.get(token) == null){
-                        poswords.put(token, 1.0);
-                    }
-                    else{
-                        poswords.put(token, poswords.get(token) + 1.0);
-                    }
+                    poswords.merge(token, 1.0, Double::sum);
                     totalposwords++;
                 }
             }
             else{
                 for (String token : tokens){
-                    if (negwords.get(token) == null){
-                        negwords.put(token, 1.0);
-                    }
-                    else{
-                        negwords.put(token, negwords.get(token) + 1.0);
-                    }
+                    negwords.merge(token, 1.0, Double::sum);
                     totalnegwords++;
                 }
             }

@@ -72,5 +72,32 @@ public class Exercise5Tester {
 		System.out.println(newAccuracy);
 		System.out.println();
 
+		Path lexiconFile = Paths.get("data/sentiment_lexicon");
+
+		// Loading the dataset.
+		Path reviewsDir = dataDirectory.resolve("reviews");
+
+		IExercise1 implementation1 = new Exercise1();
+
+		Map<Path, Sentiment> predictedSentiments = implementation1.simpleClassifier(dataSet.keySet(), lexiconFile);
+		System.out.println("Classifier predictions:");
+		System.out.println(predictedSentiments);
+		System.out.println();
+
+		double calculatedAccuracy = implementation1.calculateAccuracy(dataSet, predictedSentiments);
+		System.out.println("Classifier accuracy:");
+		System.out.println(calculatedAccuracy);
+		System.out.println();
+
+
+		Map<Path, Sentiment> predictedSentiments2016 = implementation1.simpleClassifier(testSet.keySet(), lexiconFile);
+		System.out.println("Classifier predictions 2016:");
+		System.out.println(predictedSentiments2016);
+		System.out.println();
+
+		double calculatedAccuracy2016 = implementation1.calculateAccuracy(testSet, predictedSentiments2016);
+		System.out.println("Classifier accuracy:");
+		System.out.println(calculatedAccuracy2016);
+		System.out.println();
 	}
 }

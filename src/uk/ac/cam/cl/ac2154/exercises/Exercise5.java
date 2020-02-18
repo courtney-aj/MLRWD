@@ -21,8 +21,8 @@ public class Exercise5 implements IExercise5 {
         Collections.shuffle(paths, new Random(seed));
 
         double sizeofSubFold = dataSet.size()/10;
-        int startSubFold = 0;
-        int endSubFold = ((int) sizeofSubFold);
+        int startSubFold;
+        int endSubFold;
 
         for(double i=0.0; i < 10.0; i++){
             startSubFold = (int) (i*sizeofSubFold);
@@ -51,8 +51,6 @@ public class Exercise5 implements IExercise5 {
 
         Collections.shuffle(pathsPos, new Random(seed));
         Collections.shuffle(pathsNeg, new Random(seed));
-        System.out.println(pathsNeg.size());
-        System.out.println(pathsPos.size());
         double sizeofSubFoldPos = pathsPos.size()/10; //not going to assume equal
         double sizeofSubFoldNeg = pathsNeg.size()/10;
         int startSubFoldPos = 0;
@@ -84,8 +82,6 @@ public class Exercise5 implements IExercise5 {
                     totalNeg++;
                 }
             }
-            System.out.println(totalNeg);
-            System.out.println(totalPos);
         }
         return results;
     }
