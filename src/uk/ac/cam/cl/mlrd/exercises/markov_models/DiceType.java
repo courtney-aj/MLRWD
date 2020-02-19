@@ -9,6 +9,7 @@ public enum DiceType {
 	private char name;
 
 	private static Map<Character, DiceType> types = new HashMap<>();
+
 	static {
 		for (DiceType type : DiceType.values()) {
 			types.put(type.name, type);
@@ -29,7 +30,7 @@ public enum DiceType {
 	 * 
 	 * @param name
 	 *            <code>char</code> The char name of the die type
-	 * @return {@link Feature} The corresponding die type
+	 * @return {@link //Feature} The corresponding die type
 	 */
 	public static DiceType valueOf(char name) {
 		return types.get(name);
