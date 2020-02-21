@@ -2,7 +2,6 @@ package uk.ac.cam.cl.ac2154.exercises;
 
 import uk.ac.cam.cl.mlrd.exercises.sentiment_detection.IExercise5;
 import uk.ac.cam.cl.mlrd.exercises.sentiment_detection.Sentiment;
-import uk.ac.cam.cl.ac2154.exercises.Exercise2;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -68,7 +67,6 @@ public class Exercise5 implements IExercise5 {
             endSubFoldNeg = (int) ((i+1.0)*sizeofSubFoldNeg);
             fold.putAll(pathsNeg.subList(startSubFoldNeg, endSubFoldNeg).stream()
                     .collect(Collectors.toMap(Function.identity(), dataSet::get))); //maps path, Sentiment from dataSet
-
             results.add(fold);
         }
         for(Map<Path, Sentiment> fold : results){
